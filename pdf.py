@@ -35,28 +35,35 @@ class GeneradorPdf:
             total_demandas = p.get('promedio_total_demandas')
             demandas_satisfechas = total_demandas -demandas_insatisfechas
             
-            plt.title('Analisis de Demandas')
-            texto = "Total de demandas: %d \n Insatisfechas %d \n Satisfechas %d"%(total_demandas,demandas_insatisfechas, demandas_satisfechas)
+            colors = ['white', 'red', 'lightcoral', 'gold']
+
+            texto = "Total de Demandas: %d \n Insatisfechas %d \n Satisfechas %d"%(total_demandas,demandas_insatisfechas, demandas_satisfechas)
             sizes = [demandas_satisfechas, demandas_insatisfechas]
-            explode = (0, 0.1)  # only "explode" the 2nd slice (i.e. 'Hogs')
-            fig1, ax1 = plt.subplots()  
-            plt.text( -0.01,0.9, texto)
-            ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
-                    shadow=True, startangle=100)
+            explode = (0, 0.2)  # only "explode" the 2nd slice (i.e. 'Hogs')
+            fig1, ax1 = plt.subplots()
+            ax1.set_title('Analisis de Demandas', bbox={'facecolor':'0.9', 'pad':5})  
+            plt.text( 0.7,0.8, texto)
+            ax1.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=115)
             ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+            plt.gca().set_aspect('1')
+
+            resumen = "[ Configuracion ] \nAnios Simulados: %d \nDias Simulados: %d \nMeses Simulados: %d \nHoras Prod.xDia: %d \nDias Prod.xMes: %d \nCant.Empleados: %d \nTiempo Atencion 1: %d \nTiempo Atencion 2: %d" %(2,5,4,7,8,6,4,3) 
+            plt.text( -1.5,-1.3, resumen, horizontalalignment='left', bbox={'facecolor':'red', 'alpha':0.4, 'pad':25})
+           
+
+
             pdf.savefig()  # saves the current figure into a pdf page
             plt.close()
 
-            plt.title('Demandas Insatisfechas')
-            texto = "Total de demandas insatisfechas: %d \n Por Empleados %d \n Por Stock %d"%(demandas_insatisfechas, demoras_empl, demoras_stock)
+            texto = "Total Dem. Insatis: %d \n Por Empleados %d \n Por Stock %d"%(demandas_insatisfechas, demoras_empl, demoras_stock)
             labels = 'Demoras Por Empleados', 'Demoras Por Stock'
             sizes = [demoras_empl,demoras_stock]
-            explode = (0, 0.1)  # only "explode" the 2nd slice (i.e. 'Hogs')
+            explode = (0, 0.2)  # only "explode" the 2nd slice (i.e. 'Hogs')
             fig1, ax1 = plt.subplots()
-            ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
-                    shadow=True, startangle=90)
+            ax1.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=112)
             ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-            plt.text( -0.01,0.9, texto)
+            ax1.set_title('Dem Insatisfechas', bbox={'facecolor':'0.9', 'pad':5})  
+            plt.text( 0.7,0.8, texto)
             pdf.savefig()  # saves the current figure into a pdf page
             plt.close()
 
