@@ -4,7 +4,6 @@ from pylab import *
 from modelos import Simulacion, Estadisticas
 import numpy as np
 
-
 class EstadisticasPlot:
 
     def __init__(self, estadisticas = None):
@@ -24,6 +23,7 @@ class EstadisticasPlot:
         plt.figure(1, figsize=(20, 10))
         plt.suptitle('Estaditicas Obtenidas', fontsize=16, bbox={'facecolor':'0.8', 'pad':8})
         colors = ['white', 'red', 'lightcoral', 'gold']
+        colors2 = ['darksalmon', 'tomato', 'lightcoral', 'gold']
 
         plt.subplot(1,2,1) 
         ax = plt.axis('equal')
@@ -31,7 +31,7 @@ class EstadisticasPlot:
         plt.text( -0.01,0.9, texto)
         labels = 'Demandas Satisfechas', 'Demandas Insatisfechas'
         fracs = [demandas_satisfechas, demandas_insatisfechas]
-        explode = (0, 0.2)  
+        explode = (0, 0.1)  
         plt.title('Analisis de Demandas', bbox={'facecolor':'0.8', 'pad':5})
         plt.pie(fracs, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True,startangle=100)
         plt.gca().set_aspect('1')
@@ -42,9 +42,9 @@ class EstadisticasPlot:
         plt.text( -0.01,0.9, texto2)
         labels2 = 'Demoras Por Empleados', 'Demoras Por Stock'
         fracs2 = [demoras_empl,demoras_stock]
-        explode2 = (0, 0.2)  
+        explode2 = (0, 0.1)  
         plt.title('Demandas Insatisfechas', bbox={'facecolor':'0.8', 'pad':5})
-        plt.pie(fracs2, explode=explode2, labels=labels2, colors=colors, autopct='%1.1f%%', shadow=True,startangle=100)
+        plt.pie(fracs2, explode=explode2, labels=labels2, colors=colors2, autopct='%1.1f%%', shadow=True,startangle=100)
         plt.gca().set_aspect('1')
 
         plt.show()

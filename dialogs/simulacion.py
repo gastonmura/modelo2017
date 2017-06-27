@@ -40,7 +40,19 @@ class form_simulacion(QtGui.QDialog):
 
 
     def informePdf(self):
-        g = GeneradorPdf(self.estadisticas).getPdf()
+        # add
+        configuracion = {
+            'anio': self.sim.get('anios'),
+            'dia': self.sim.get('dias'),
+            'mes': self.sim.get('meses'),
+            'horas_prod': self.sim.get('horas_prod'),
+            'dias_prod': self.sim.get('dias_prod'),
+            'cant_emp': self.sim.get('cant_emp'),
+            't1': self.sim.get('t1'),
+            't2': self.sim.get('t2')
+        }
+
+        g = GeneradorPdf(configuracion, self.estadisticas).getPdf()
         print "PDF GENERADO"
         self.estadisticasPlot()
 
