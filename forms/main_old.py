@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Fri Jun 30 13:52:42 2017
+# Created: Tue Jun 20 06:32:15 2017
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -92,7 +92,6 @@ class Ui_MainWindow(object):
         self.label_6.setObjectName(_fromUtf8("label_6"))
         self.gridLayout.addWidget(self.label_6, 6, 0, 1, 1)
         self.inputCantEmpleados = QtGui.QLineEdit(self.gridLayoutWidget)
-        self.inputCantEmpleados.setEnabled(False)
         self.inputCantEmpleados.setObjectName(_fromUtf8("inputCantEmpleados"))
         self.gridLayout.addWidget(self.inputCantEmpleados, 5, 1, 1, 1)
         self.label_4 = QtGui.QLabel(self.gridLayoutWidget)

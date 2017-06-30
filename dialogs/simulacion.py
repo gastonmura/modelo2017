@@ -110,7 +110,7 @@ class form_simulacion(QtGui.QDialog):
         self.ui.lblTotalDias.setText(str(len(simulacion[0].get('eventos'))-1))
         self.estadisticas = Estadisticas().getEstadisticas(sim)
         promedios_generales = self.estadisticas.get('promedios_totales')
-        self.ui.lblTotalAcumulado.setText(str(promedios_generales.get('cant_total_acumulada')))
+        #self.ui.lblTotalAcumulado.setText(str(promedios_generales.get('cant_total_acumulada')))
         self.ui.lblAcumuladoPorDia.setText(str(promedios_generales.get('prom_acumulado_por_dia')))
         self.ui.lblCantDemorasEmp.setText(str(promedios_generales.get('cant_dias_demoras_empl')))
         self.ui.lblCantDemorasStock.setText(str(promedios_generales.get('cant_dias_falta_stock')))
